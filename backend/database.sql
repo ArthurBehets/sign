@@ -10,6 +10,8 @@ rights char(3),
 primary key(grade)
 );
 
+insert into grade (grade, rights) values ('admin', 'rwd'), ('user', 'rxx');
+
 create table category(
 categoryId smallint auto_increment NOT NULL,
 categoryName varchar(32) NOT NULL,
@@ -19,10 +21,10 @@ primary key(categoryId)
 create table user(
 userId smallInt unsigned auto_increment,
 grade varchar(32) NOT NULL,
-userName varchar(128) NOT NULL,
-userEmail varchar(256) NOT NULL,
+userFirstname varchar(128) NOT NULL,
+userLastname varchar(128) NOT NULL,
+userEmail varchar(256) NOT NULL UNIQUE,
 userPassword varchar(128) NOT NULL,
-userImgUrl varchar(128) NOT NULL,
 primary key(userId),
 foreign key (grade)
 references grade(grade)
