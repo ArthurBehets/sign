@@ -1,6 +1,7 @@
 var con = require('../middleware/connect');
 var fs = require('fs');
 var bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 //const { getMaxListeners } = require('process');
 
@@ -9,7 +10,6 @@ require('dotenv').config();
 const testMail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
 exports.signup = (req, res, next) => {
-    console.log(req.body);
     var userData = req.body;
     console.log(userData.password);
     bcrypt.hash(userData.password, 10)
@@ -42,6 +42,36 @@ exports.signup = (req, res, next) => {
     })
   }
 
-exports.login = (req, res, next) => {
-
-}
+  exports.login = (req, res, next) => {
+    const userData = req.body;
+    con.query(
+      "SELECT userPassword, userId, grade FROM user WHERE userEmail = ?",
+      [userData.email],
+      function(err, results){
+        if(results){
+          bcrypt.compare(userData.password, results[0].userPassword)
+          .then(valid =>{
+            if(!valid){
+              return res.status(500).json({
+                console : "Mot de passe incorrect"
+              })
+            }
+            return res.status(200).json({
+              console : "connected",
+              userId: results[0].userId,
+              grade: results[0].grade,
+                token: jwt.sign( 
+                  { "userId": results[0].userId},
+                  `${process.env.ACCESS_SECRET_TOKEN}`,
+                  { expiresIn: '24h' })
+            })      
+          })
+        }
+        else if(err){
+          return res.status(500).json({
+            console : "Cet email n'est pas enregistré."
+          })
+        }
+      }
+    )
+  }
