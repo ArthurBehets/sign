@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 
@@ -18,7 +19,14 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/images', express.static(path.join(__dirname, 'images')));
+
+app.use(express.static(__dirname + "/"));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/index.html");
+});
+
 app.use('/api/auth', userRoutes);
 app.use('/api/sign', signRoutes);
 app.use('/api/proposition', propositionRoutes);

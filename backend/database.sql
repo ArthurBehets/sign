@@ -34,7 +34,6 @@ create table sign(
 signId smallInt unsigned auto_increment,
 userId smallInt unsigned,
 categoryId smallint NOT NULL,
-grade varchar(32) NOT NULL,
 traduction varchar(256) NOT NULL,
 videoUrl varchar(128) NOT NULL,
 primary key(signId),
