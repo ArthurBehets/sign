@@ -45,12 +45,15 @@ references user(userId)
 
 create table proposition(
 propositionId smallint unsigned auto_increment,
+userId smallInt unsigned,
 propositionTraduction varchar(256) NOT NULL,
 categoryId smallint NOT NULL,
 propositionUrl varchar(256) NOT NULL, 
 foreign key (categoryId)
 references category(categoryId),
-primary key(propositionId)
+primary key(propositionId),
+foreign key (userId) 
+references user(userId)
 );
 
 create table toWork(

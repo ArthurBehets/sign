@@ -7,7 +7,6 @@ const app = express();
 
 const userRoutes = require('./routes/user');
 const signRoutes = require('./routes/sign');
-const propositionRoutes = require('./routes/proposition');
 
 
 app.use((req, res, next) => {
@@ -29,7 +28,6 @@ app.get("/", function(req, res) {
 
 app.use('/api/auth', userRoutes);
 app.use('/api/sign', signRoutes);
-app.use('/api/proposition', propositionRoutes);
 
 
 module.exports =  app;
