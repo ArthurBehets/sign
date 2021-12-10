@@ -27,6 +27,18 @@ exports.getOneCategory = (req, res, next) => {
     )
 }
 
+exports.getAllCategories = (req, res, next) => {
+    con.query(
+        "select * from category",
+        function(err, results){
+            if(err){
+                return res.status(500).json("Erreur serveur");
+            }
+            return res.status(200).json(results);
+        }
+    )
+}
+
 exports.createSign = (req, res, next) => {
     let path = (`${req.protocol}://${req.get('host')}/images/${req.file.filename}`);
     let datas = (req.body.body);

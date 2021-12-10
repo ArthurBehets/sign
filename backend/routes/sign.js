@@ -8,6 +8,7 @@ const signCtrl = require('../controllers/sign');
 
 router.get('/getOne/:signId', auth, signCtrl.getOne);
 router.get('/getOneCategory/:categoryId', auth, signCtrl.getOneCategory);
+router.get('/getAllCategories', signCtrl.getAllCategories);
 
 router.post('/createSign', auth , multer,  signCtrl.createSign);
 router.post('modifyTraduction', auth, signCtrl.modifyTraduction);

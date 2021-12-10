@@ -8,7 +8,7 @@ import MyNavbar from './components/Navbar/Navbar'
 
 ReactDOM.render(
   <React.StrictMode>
-      <BrowserRouter>
+      <BrowserRouter className="all">
           <MyNavbar />
           <Routes>
               <Route exact path="/" element={<Home />} />
