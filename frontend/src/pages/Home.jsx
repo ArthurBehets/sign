@@ -1,8 +1,9 @@
 import HomeComponent from "../components/HomeComponent/HomeComponent";
+import '../scss/main.scss'
 
 function Home() {
   return (
-    <div className="Home">
+    <div className="page">
       <HomeComponent />
     </div>
   );

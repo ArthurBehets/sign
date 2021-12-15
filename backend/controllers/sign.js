@@ -3,8 +3,7 @@ var fs = require('fs');
 
 exports.getOne = (req, res, next) => {
     con.query(
-        "select * from sign where signId = ?"
-        [req.params],
+        "select * from `sign` where `signId` = " + req.params.signId,
         function(err, results){
             if(err){
                 return res.status(500).json("Le signe n'est pas disponible");
@@ -16,11 +15,10 @@ exports.getOne = (req, res, next) => {
 
 exports.getOneCategory = (req, res, next) => {
     con.query(
-        "select * from sign where categoryId = ?"
-        [req.params],
+        "select * from `sign` natural join `category` where `categoryId` = " + (req.params.categoryId) ,
         function(err, results){
             if(err){
-                return res.status(500).json("Le signe n'est pas disponible");
+                return res.status(500).json(err);
             }
             return res.status(200).json(results);
         }

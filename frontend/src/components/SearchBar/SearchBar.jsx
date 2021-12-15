@@ -41,19 +41,19 @@ class SearchBar extends Component {
     }
     render() {
         return (
-            <div className="corps__categories">
-                <div className="row corps__categories-head">
-                    <h2 className="col-lg-2 col-sm-6 corps__categories-head-title">
+            <div className="corps__elements">
+                <div className="row corps__elements-head">
+                    <h2 className="col-lg-2 col-sm-6 corps__elements-head-title">
                         Catégories
                     </h2>
-                    <form className="col-lg-2 col-sm-6 corps__categories-head-form">
+                    <form className="col-lg-2 col-sm-6 corps__elements-head-form">
                         <input type="text" id="search" placeholder="Trouver un catégorie" ref={input => this.search = input} onChange={this.handleInputChange}/>
                     </form>
                 </div>
-                <div className="corps__categories-list row">
+                <div className="corps__elements-list row">
                     {
                         this.state.dataSelected.map((i) =>
-                            <a className="corps__categories-list-item col-lg-4" href={"/Category/" + i.categoryId} id={"category" + i.categoryId}>{i.categoryName}</a>
+                            <a className="corps__elements-list-item col-lg-4" key={i.categoryId} href={"/Category/" + i.categoryId} id={"category" + i.categoryId}>{i.categoryName}</a>
                         )
                     }
                 </div>
