@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import ShowCategory from '../components/ShowCategory/ShowCategory'
+import ShowCategory from '../components/ShowCategory'
 import '../scss/main.scss'
 function Category(){
     const { categoryId } = useParams();

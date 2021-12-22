@@ -15,7 +15,7 @@ ReactDOM.render(
           <MyNavbar />
           <Routes>
               <Route exact path="/" element={<Home />} />
-              <Route exact path="/Sign" element={<Sign />} />
+              <Route exact path="/Sign/:signId" element={<Sign />} />
               <Route exact path = "/Category/:categoryId" element={<Category />} />
               <Route path='*' exact={true} element={<Error />} />
           </Routes>

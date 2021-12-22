@@ -1,11 +1,13 @@
 .page{
     background : linear-gradient(white, #ffadad);
     min-height : 100%;
-    height : auto;
+    overflow-y: auto;
+    height : 100%;
     width : 100%;
     position : fixed;
 }
 .corps{
+    height : 100%;
     padding : 50px;
     width : 100%;
     margin : 0;
@@ -17,6 +19,9 @@
         &-head{
             &-title{
                 font-size: x-large;
+            }
+            &-button{
+                width : 10%;
             }
         }
         &-list{
@@ -33,32 +38,51 @@
         padding-top : 50px;
         &-list{
             &-sign{
+                height : 400px;
                 width : 100%;
-                padding-top : 30px;
+                margin-bottom: 40px;
+                padding-top : 25px;
                 padding-bottom: 30px;
                 padding-left : 2%;
                 border-radius: 20px;
                 box-shadow: 2px 2px 2px 2px #ffadad;
                 &-traduction{
                     &-p{
-                        padding-left : 100px;
-                        padding-top : 70px;
+                        text-align: center;
+                        padding-top : 150px;
                     }
                 }
                 &-videoDiv{
+                    height : 300px;
                     &-video{
                         height : 300px;
                         object-fit: cover;
                     }
                 }
                 &-buttons{
-                    padding-top : 70px;
+                    display : flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    padding-left: 30px;
                     &-button{
+                        padding-left : 10px;
+                        color : black;
+                        text-decoration: none;
+                        box-shadow: 1px 1px 1px 1px #ffadad;
                         margin-bottom: 20px;
+                        width : 50%;
+                        &:hover{
+                            color : black;
+                            box-shadow: 2px 2px 2px 2px #ffadad;
+                            padding-left : 13px;
+                        }
                     }
                 }
             }
         }
+    }
+    &__item{
+        margin-top: 40px;
     }
     
 }

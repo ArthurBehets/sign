@@ -17,7 +17,6 @@ class ShowCategory extends Component{
     }
     
     componentDidMount(){
-        console.log(this.param)
         fetch('http://localhost:3001/api/sign/getOneCategory/' + this.param)
         .then(res =>{
             if(res.ok){
@@ -57,15 +56,17 @@ class ShowCategory extends Component{
         if(this.state.mode === 'col'){
             return(
                 <div className="corps container">
-                    <div>
-                        <h1 className="corps__title"> { this.state.category } </h1>
-                        <button onClick={this.changeDisplay}><FontAwesomeIcon icon="grip-lines-vertical" /></button>
+                    <div className="row corps__elements-head">
+                        <h1 className="col-lg-1 col-sm-6 corps__elements-head-title"> { this.state.category } </h1>
+                        <div   className=" col corps__elements-head-button">
+                            <button onClick={this.changeDisplay}><FontAwesomeIcon icon="grip-lines-vertical" /></button>
+                        </div>
                     </div>
-                    <div className="corps__items">
-                        <div className="corps__items-list">
+                    <div className="corps__element">
+                        <div className="corps__elements-list row">
                             { 
                             this.state.sign.map((i) => 
-                                <a className="corps__elements-list-item col-lg-4" key={i.signId} href="/" id={"sign" + i.signId}>{i.traduction}</a>
+                                <a className="corps__elements-list-item col-lg-2" key={i.signId} href={"/Sign/" + i.signId} id={"sign" + i.signId}>{i.traduction}</a>
                                 )
                             }
                         </div>
@@ -76,34 +77,33 @@ class ShowCategory extends Component{
         else if(this.state.mode === 'block'){
             return(
                 <div className="corps container">
-                    <h1 className="corps__title"> { this.state.category } </h1>
-                    <button onClick={this.changeDisplay}><FontAwesomeIcon icon="grip-horizontal" /></button>
+                    <div className="row corps__elements-head">
+                        <h1 className="col-lg-1 col-sm-6 corps__elements-head-title"> { this.state.category } </h1>
+                        <div   className=" col corps__elements-head-button">
+                            <button onClick={this.changeDisplay}><FontAwesomeIcon icon="grip-horizontal" /></button>
+                        </div>
+                    </div>
                     <div className="corps__items">
                         <div className="corps__items-list">
                             { 
                             this.state.sign.map((i) => 
                                     <div className='corps__items-list-sign row' key={i.signId}>
-                                        <div className='corps__items-list-sign-traduction col-lg-4'>
-                                        <div className='player-wrapper'>
+                                        <div className='player-wrapper col-lg-6 corps__items-list-sign-videoDiv'>
                                             <ReactPlayer
-                                            playing
-                                            className='react-player'
+                                            className='react-player corps__items-list-sign-videoDiv-video'
                                             url= '../videos/video-1638020145.mp4'
-                                            width='50%'
-                                            height='50%'
                                             controls = {true}
 
                                             />
                                         </div>
-                                            <p className='corps__items-list-sign-traduction-p'>{i.traduction}</p>
-                                        </div>
+                                        <p className='corps__items-list-sign-traduction-p col-lg-3'>{i.traduction}</p>
                                         <div className="col-lg-3 corps__items-list-sign-buttons">
-                                            <button className="row col-lg-4 corps__items-list-sign-buttons-button">
+                                            <a href="/" className="row corps__items-list-sign-buttons-button">
                                                 A travailler
-                                            </button>
-                                            <button className="row ">
+                                            </a>
+                                            <a href="/" className="row corps__items-list-sign-buttons-button">
                                                 Connus
-                                            </button>
+                                            </a>
                                         </div>
                                     </div> 
                                 )

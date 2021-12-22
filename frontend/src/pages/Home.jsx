@@ -1,4 +1,4 @@
-import HomeComponent from "../components/HomeComponent/HomeComponent";
+import HomeComponent from "../components/HomeComponent";
 import '../scss/main.scss'
 
 function Home() {

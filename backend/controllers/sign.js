@@ -3,7 +3,7 @@ var fs = require('fs');
 
 exports.getOne = (req, res, next) => {
     con.query(
-        "select * from `sign` where `signId` = " + req.params.signId,
+        "select * from `sign` natural join category where `signId` = " + req.params.signId,
         function(err, results){
             if(err){
                 return res.status(500).json("Le signe n'est pas disponible");
