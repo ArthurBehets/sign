@@ -1,10 +1,28 @@
+ul{
+    list-style: none;
+}
+
+
+//Header
+.navbar{
+    height : 7vh;
+}
+.nav{
+    width : 70%;
+    display: flex;
+    margin-left : 30%;
+    justify-content: space-between;
+}
+//Header END
+
 .page{
     background : linear-gradient(white, #ffadad);
-    min-height : 100%;
+    background-attachment: fixed;
+    min-height : 73vh;
     overflow-y: auto;
     height : 100%;
     width : 100%;
-    position : fixed;
+    position : relative;
 }
 .corps{
     height : 100%;
@@ -28,6 +46,7 @@
             }
             &-button{
                 width : 10%;
+                margin-left : 20px;
             }
         }
         &-list{
@@ -37,6 +56,7 @@
             &-item{
                 color : black;
                 text-decoration: none;
+                margin-bottom: 15px;
             }
         }
     }
@@ -52,39 +72,40 @@
                 padding-left : 2%;
                 border-radius: 20px;
                 box-shadow: 2px 2px 2px 2px #ffadad;
-                &-traduction{
-                    &-p{
-                        text-align: center;
-                        padding-top : 150px;
-                    }
-                }
                 &-videoDiv{
                     height : 300px;
                     &-video{
                         height : 300px;
-                        object-fit: cover;
                     }
                 }
-                &-buttons{
+                &-rightDiv{
                     display : flex;
-                    justify-content: center;
                     flex-direction: column;
-                    padding-left: 30px;
-                    &-button{
-                        border : 1px solid #ffadad;
-                        padding-left : 10px;
-                        box-shadow: 1px 1px 1px 1px #ffadad;
-                        margin-bottom: 20px;
-                        width : 50%;
-                        &:hover{
-                            color : black;
-                            box-shadow: 2px 2px 2px 2px #ffadad;
-                            padding-left : 13px;
-                        }
-                        &:active{
-                            padding-left : 10px;
-                            width : 48%;
-                            box-shadow: 0.5px 0.5px 0.5px 0.5px #ffadad;
+                    &-traduction{
+                        text-align: center;
+                        padding-top : 70px;
+                    }
+                    &-buttons{
+                        padding-top : 30px;
+                        display : flex;
+                        flex-direction: column;
+                        align-items : center;
+                        &-button{
+                            align-self: center;
+                            border : 1px solid #ffadad;
+                            box-shadow: 1px 1px 1px 1px #ffadad;
+                            margin-bottom: 20px;
+                            width : 50%;
+                            &:hover{
+                                color : black;
+                                box-shadow: 2px 2px 2px 2px #ffadad;
+                                padding-left : 13px;
+                            }
+                            &:active{
+                                padding-left : 10px;
+                                width : 48%;
+                                box-shadow: 0.5px 0.5px 0.5px 0.5px #ffadad;
+                            }
                         }
                     }
                 }
@@ -95,4 +116,57 @@
         margin-top: 40px;
     }
     
+}
+
+@media screen and (min-width : 768px) and (max-width : 992px){
+    .corps{
+        &__items{
+            &-list{
+                &-sign{
+                    height : auto;
+                    margin-bottom : 80px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 768px){
+    .corps{
+        &__items{
+            &-list{
+                &-sign{
+                    height : auto;
+                    margin-bottom : 80px;
+                }
+            }
+        }
+    }
+}
+
+
+//Footer
+
+.footer{
+    height : 20vh;
+    width : 100%;
+    background-color :#ffadad;
+    padding-top: 50px;
+    &__content{
+        &-lists{
+            &-list{
+                text-align: center;
+                & li a{
+                    color : black;
+                    text-decoration: none;
+                    &:hover{
+                        font-size : 17px;
+                    }
+                    &:active{
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
 }

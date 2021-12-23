@@ -4,8 +4,9 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from './pages/Home'
 import Sign from './pages/Sign'
 import Error from './pages/Error'
-import MyNavbar from './components/Navbar/Navbar'
+import MyNavbar from './components/Navbar'
 import Category from './pages/Category'
+import Footer from './components/Footer'
 
 
 
@@ -19,6 +20,7 @@ ReactDOM.render(
               <Route exact path = "/Category/:categoryId" element={<Category />} />
               <Route path='*' exact={true} element={<Error />} />
           </Routes>
+          <Footer />
       </BrowserRouter>
   </React.StrictMode>,
 document.getElementById('root')

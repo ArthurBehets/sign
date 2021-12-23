@@ -25,7 +25,7 @@ class SearchBar extends Component {
         })
 
     }
-    getData = () => {
+    componentDidMount = () => {
         fetch(`http://localhost:3001/api/sign/getAllCategories`)
             .then(response => response.json())
             .then(responseData => {
@@ -34,10 +34,6 @@ class SearchBar extends Component {
                 })
                 this.data = responseData
             })
-    }
-
-    componentWillMount() {
-        this.getData();
     }
     render() {
         return (
@@ -53,7 +49,7 @@ class SearchBar extends Component {
                 <div className="corps__elements-list row">
                     {
                         this.state.dataSelected.map((i) =>
-                            <a className="corps__elements-list-item col-lg-4" key={i.categoryId} href={"/Category/" + i.categoryId} id={"category" + i.categoryId}>{i.categoryName}</a>
+                            <a className="corps__elements-list-item col-sm-6 col-lg-4" key={i.categoryId} href={"/Category/" + i.categoryId} id={"category" + i.categoryId}>{i.categoryName}</a>
                         )
                     }
                 </div>

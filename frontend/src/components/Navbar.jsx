@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
-import {  Navbar, Nav,  NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-import './Navbar.css'
+import {  Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import '../scss/main.scss'
 
 function MyNavbar() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="white" expand="lg" className='navbar'>
         <Container>
             <Navbar.Brand href="/">Accueil</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -13,13 +13,6 @@ function MyNavbar() {
             <Nav className="me-auto nav">
                 <Nav.Link href="/">Ma liste "A travailler"</Nav.Link>
                 <Nav.Link href="/">Ma liste "Connus"</Nav.Link>
-                <NavDropdown title="Categories" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
                 <Form className="d-flex">
                 <FormControl
                 type="search"

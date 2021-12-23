@@ -45,21 +45,24 @@ class Sign extends Component{
                 <div className="corps__items ">
                     <div className="corps__items-list">
                         <div className='corps__items-list-sign row'>
-                            <div className='player-wrapper col-lg-6 corps__items-list-sign-videoDiv'>
+                            <div className='player-wrapper col-lg-8 col-xl-6 corps__items-list-sign-videoDiv'>
                                 <ReactPlayer
                                 className='react-player corps__items-list-sign-videoDiv-video'
                                 url= '../videos/video-1638020145.mp4'
                                 controls = {true}
+                                width="100%"
                                 />
                             </div>
-                            <p className='corps__items-list-sign-traduction-p col-lg-3'>{this.state.sign.traduction}</p>
-                            <div className="col-lg-3 corps__items-list-sign-buttons">
-                                <button  onClick={this.handleToWork} className="row corps__items-list-sign-buttons-button">
-                                    A travailler
-                                </button >
-                                <button onClick={this.handleKnown} className="row corps__items-list-sign-buttons-button">
-                                    Connus
-                                </button>
+                            <div className='corps__items-list-sign-rightDiv col-lg-4 col-xl-6'>
+                                <p className='corps__items-list-sign-rightDiv-traduction'>{this.state.sign.traduction}</p>
+                                <div className="corps__items-list-sign-rightDiv-buttons">
+                                    <button  onClick={this.handleToWork} className="row corps__items-list-sign-rightDiv-buttons-button">
+                                        A travailler
+                                    </button >
+                                    <button onClick={this.handleKnown} className="row corps__items-list-sign-rightDiv-buttons-button">
+                                        Connus
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

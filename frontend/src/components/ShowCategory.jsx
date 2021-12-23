@@ -24,7 +24,6 @@ class ShowCategory extends Component{
             }
         })
         .then(results =>{
-            console.log(results);
             this.setState({
                 sign : results
             })
@@ -66,7 +65,7 @@ class ShowCategory extends Component{
                         <div className="corps__elements-list row">
                             { 
                             this.state.sign.map((i) => 
-                                <a className="corps__elements-list-item col-lg-2" key={i.signId} href={"/Sign/" + i.signId} id={"sign" + i.signId}>{i.traduction}</a>
+                                <a className="corps__elements-list-item col-6 col-md-4 col-lg-2" key={i.signId} href={"/Sign/" + i.signId} id={"sign" + i.signId}>{i.traduction}</a>
                                 )
                             }
                         </div>
@@ -78,8 +77,8 @@ class ShowCategory extends Component{
             return(
                 <div className="corps container">
                     <div className="row corps__elements-head">
-                        <h1 className="col-lg-1 col-sm-6 corps__elements-head-title"> { this.state.category } </h1>
-                        <div   className=" col corps__elements-head-button">
+                        <h1 className="col-lg-2 col-sm-4 corps__elements-head-title"> { this.state.category } </h1>
+                        <div   className=" col-sm-2 corps__elements-head-button">
                             <button onClick={this.changeDisplay}><FontAwesomeIcon icon="grip-horizontal" /></button>
                         </div>
                     </div>
@@ -88,22 +87,25 @@ class ShowCategory extends Component{
                             { 
                             this.state.sign.map((i) => 
                                     <div className='corps__items-list-sign row' key={i.signId}>
-                                        <div className='player-wrapper col-lg-6 corps__items-list-sign-videoDiv'>
+                                        <div className='player-wrapper col-lg-8 col-xl-6 corps__items-list-sign-videoDiv'>
                                             <ReactPlayer
                                             className='react-player corps__items-list-sign-videoDiv-video'
                                             url= '../videos/video-1638020145.mp4'
                                             controls = {true}
+                                            width ="100%"
 
                                             />
                                         </div>
-                                        <p className='corps__items-list-sign-traduction-p col-lg-3'>{i.traduction}</p>
-                                        <div className="col-lg-3 corps__items-list-sign-buttons">
-                                            <button  onClick={this.handleToWork} className="row corps__items-list-sign-buttons-button">
-                                                A travailler
-                                            </button >
-                                            <button onClick={this.handleKnown} className="row corps__items-list-sign-buttons-button">
-                                                Connus
-                                            </button>
+                                        <div className='corps__items-list-sign-rightDiv col-lg-4 col-xl-6'>
+                                            <p className='corps__items-list-sign-rightDiv-traduction'>{i.traduction}</p>
+                                            <div className="corps__items-list-sign-rightDiv-buttons">
+                                                <button  onClick={this.handleToWork} className="row corps__items-list-sign-rightDiv-buttons-button">
+                                                    A travailler
+                                                </button >
+                                                <button onClick={this.handleKnown} className="row corps__items-list-sign-rightDiv-buttons-button">
+                                                    Connus
+                                                </button>
+                                            </div>
                                         </div>
                                     </div> 
                                 )
