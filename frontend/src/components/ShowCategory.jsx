@@ -98,12 +98,12 @@ class ShowCategory extends Component{
                                         </div>
                                         <p className='corps__items-list-sign-traduction-p col-lg-3'>{i.traduction}</p>
                                         <div className="col-lg-3 corps__items-list-sign-buttons">
-                                            <a href="/" className="row corps__items-list-sign-buttons-button">
+                                            <button  onClick={this.handleToWork} className="row corps__items-list-sign-buttons-button">
                                                 A travailler
-                                            </a>
-                                            <a href="/" className="row corps__items-list-sign-buttons-button">
+                                            </button >
+                                            <button onClick={this.handleKnown} className="row corps__items-list-sign-buttons-button">
                                                 Connus
-                                            </a>
+                                            </button>
                                         </div>
                                     </div> 
                                 )
