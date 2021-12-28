@@ -13,6 +13,7 @@ class ShowCategory extends Component{
         param :'',
         sign : [],
         category : '',
+        categoryId : '',
         mode : 'col'
     }
     
@@ -24,11 +25,15 @@ class ShowCategory extends Component{
             }
         })
         .then(results =>{
+            console.log(results)
             this.setState({
                 sign : results
             })
             this.setState({
                 category : results[0].categoryName
+            })
+            this.setState({
+                categoryId : results[0].categoryId
             })
         })
     }
@@ -60,6 +65,7 @@ class ShowCategory extends Component{
                         <div   className=" col corps__elements-head-button">
                             <button onClick={this.changeDisplay}><FontAwesomeIcon icon="grip-lines-vertical" /></button>
                         </div>
+                        <a href={"/quizz/" + this.state.categoryId} className="col" >Passer le quizz</a>
                     </div>
                     <div className="corps__element">
                         <div className="corps__elements-list row">
@@ -81,6 +87,7 @@ class ShowCategory extends Component{
                         <div   className=" col-sm-2 corps__elements-head-button">
                             <button onClick={this.changeDisplay}><FontAwesomeIcon icon="grip-horizontal" /></button>
                         </div>
+                        <a href={"/quizz/" + this.state.category} className="col" >Passer le quizz</a>
                     </div>
                     <div className="corps__items">
                         <div className="corps__items-list">

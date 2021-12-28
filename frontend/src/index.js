@@ -7,6 +7,7 @@ import Error from './pages/Error'
 import MyNavbar from './components/Navbar'
 import Category from './pages/Category'
 import Footer from './components/Footer'
+import Quizz from './pages/Quizz'
 
 
 
@@ -18,6 +19,7 @@ ReactDOM.render(
               <Route exact path="/" element={<Home />} />
               <Route exact path="/Sign/:signId" element={<Sign />} />
               <Route exact path = "/Category/:categoryId" element={<Category />} />
+              <Route exact path = "/Quizz/:category" element={<Quizz />} />
               <Route path='*' exact={true} element={<Error />} />
           </Routes>
           <Footer />
