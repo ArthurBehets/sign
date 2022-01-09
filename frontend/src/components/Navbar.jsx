@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 import {  Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import '../scss/main.scss'
+import Datalist from './Datalist';
 
 function MyNavbar() {
     return (
@@ -20,7 +21,7 @@ function MyNavbar() {
                 className="me-2"
                 aria-label="Search"
                 />
-                <Button variant="outline-success">Search</Button>
+                <Datalist />
             </Form>
             </Nav>
             </Navbar.Collapse>
