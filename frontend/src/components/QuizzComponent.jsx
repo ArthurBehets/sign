@@ -2,7 +2,11 @@ import { Component } from 'react';
 import '../scss/main.scss'
 
 let quizzArray = [];
+let random;
 
+function clearPopup(){
+    document.getElementById("popup").innerHTML = "";
+}
 
 class Quizz extends Component{
     state = {
@@ -26,25 +30,43 @@ class Quizz extends Component{
             return quizzArray
         })
         .then(quizzArray =>{
-            let random = Math.floor(Math.random() * quizzArray.length);
+            random = Math.floor(Math.random() * quizzArray.length);
             this.setState({
                 currentSign : quizzArray[random]
             })
-            quizzArray.splice(random, 1);
             })
         }
 
     getRamdom = () => {
-        if(quizzArray.length >= 2){
-            let random = Math.floor(Math.random() * quizzArray.length);
-            this.setState({
-                currentSign : quizzArray[random]
-            })
+        let answer = document.getElementById("answer").value;
+        console.log(answer);
+        console.log(quizzArray[random].traduction)
+        
+        if(answer === quizzArray[random].traduction){
+            document.getElementById("answer").value = '';
+            document.getElementById("popup").innerHTML = "<p class='popup__good'>Bien joué</p>"
+            setTimeout(clearPopup, 5000)
+            console.log('reussi')
             quizzArray.splice(random, 1);
+            if(quizzArray.length >= 2){
+                random = Math.floor(Math.random() * quizzArray.length);
+                this.setState({
+                    currentSign : quizzArray[random]
+                })
+            }
+            else{
+                this.setState({
+                    end : true
+                })
+            }
         }
         else{
+            document.getElementById("popup").innerHTML = "<p class='popup__bad'>Dommage</p>"
+            setTimeout(clearPopup, 5000)
+            console.log('rate')
+            random = Math.floor(Math.random() * quizzArray.length);
             this.setState({
-                end : true
+                currentSign : quizzArray[random]
             })
         }
     }
@@ -58,9 +80,21 @@ class Quizz extends Component{
     render(){
         if(this.state.end === false){
             return(
-                <div className='corps'>
-                    <button onClick={this.getRamdom}>next</button>
-                    {this.state.currentSign.traduction}
+                <div className='corps container'>
+                    <div className='corps__title row'>
+                        <h1>A quel mot correspond ce signe?</h1>
+                    </div>
+                    <div className='corps__elements row'>
+                        <div className='corps__elements-quizzVideo col-12'>
+                        <iframe width="100%" height="500px" src={this.state.currentSign.videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        </div>
+                        <div className='col-12 corps__elements-quizzInput'>
+                            <input type="text" name="answer" id='answer' placeholder='Ecrivez votre réponse ici'></input>
+                            <button onClick={this.getRamdom}>Valider</button>
+                        </div>
+                        
+                        {this.state.currentSign.traduction}
+                    </div>
                 </div>
             )
         }

@@ -11,7 +11,7 @@ const testMail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
 exports.signup = (req, res, next) => {
     var userData = req.body;
-    console.log(userData.password);
+    console.log(req.body.email);
     bcrypt.hash(userData.password, 10)
     .then(hash =>{
       console.log(hash);
@@ -21,7 +21,7 @@ exports.signup = (req, res, next) => {
           console.log("ok");
           con.query(
             "INSERT INTO user (userEmail, userPassword, userLastname, userFirstname, grade) VALUES (?,?,?,?,?)", 
-            [userData.email, hash, userData.lastname, userData.firstname, userData.grade],
+            [userData.email, hash, userData.lastName, userData.firstName, userData.grade],
             function(err, results) {
                 if(err){
                   return res.status(500).json({console : "Cet email est déjà enregistré"});
@@ -44,6 +44,7 @@ exports.signup = (req, res, next) => {
 
   exports.login = (req, res, next) => {
     const userData = req.body;
+    console.log(userData);
     con.query(
       "SELECT userPassword, userId, grade FROM user WHERE userEmail = ?",
       [userData.email],

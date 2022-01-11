@@ -42,7 +42,7 @@ class Datalist extends Component{
     render(){
         return(
             <div>
-                <datalist id='suggestion'>
+                <datalist id='suggestions'>
                 {this.state.suggestions.map((sign) => 
                 <option key={sign.signId} id={'sign' + sign.signId}>{sign.traduction}</option>) } 
                 </datalist>

@@ -2,7 +2,22 @@ ul{
     list-style: none;
 }
 
-
+.popup{
+    &__good{
+        position: fixed;
+        bottom : 100px;
+        right : 100px;
+        padding : 10px;
+        background-color: green;
+    }
+    &__bad{
+        position: fixed;
+        bottom : 100px;
+        right : 100px;
+        padding : 10px;
+        background-color: red;
+    }
+}
 //Header
 .navbar{
     height : 7vh;
@@ -14,6 +29,10 @@ ul{
     justify-content: space-between;
 }
 //Header END
+
+.quizzVideo{
+    height :  60vh;
+}
 
 .page{
     background : linear-gradient(white, #ffadad);

@@ -1,12 +1,15 @@
 import { Component, React } from "react";
-import ReactPlayer from 'react-player'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import {faGripLinesVertical, faGripHorizontal} from '@fortawesome/free-solid-svg-icons'
+import AddToList from "./AddToLists";
 
 library.add(fab, faGripLinesVertical, faGripHorizontal)
+
+let known =  [];
+let toWork = [];
 
 class ShowCategory extends Component{
     state = {
@@ -18,6 +21,42 @@ class ShowCategory extends Component{
     }
     
     componentDidMount(){
+        fetch('http://localhost:3001/api/sign/getToWork/',{
+            method : 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body : JSON.stringify({'userId' : localStorage.getItem('userId')})
+        })
+        .then(res => {
+            if(res.ok){
+                return res.json()
+            }
+        })
+        .then(response =>{
+            for(let i in response){
+                toWork.push(response[i].signId)
+            }
+        })
+        fetch('http://localhost:3001/api/sign/getKnown/',{
+            method : 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body : JSON.stringify({'userId' : localStorage.getItem('userId')})
+        })
+        .then(res => {
+            if(res.ok){
+                return res.json()
+            }
+        })
+        .then(response =>{
+            for(let i in response){
+                known.push(response[i].signId)
+            }
+        })
         fetch('http://localhost:3001/api/sign/getOneCategory/' + this.param)
         .then(res =>{
             if(res.ok){
@@ -95,24 +134,23 @@ class ShowCategory extends Component{
                             this.state.sign.map((i) => 
                                     <div className='corps__items-list-sign row' key={i.signId}>
                                         <div className='player-wrapper col-lg-8 col-xl-6 corps__items-list-sign-videoDiv'>
-                                            <ReactPlayer
-                                            className='react-player corps__items-list-sign-videoDiv-video'
-                                            url= '../videos/video-1638020145.mp4'
-                                            controls = {true}
-                                            width ="100%"
-
-                                            />
+                                            <iframe width="100%" height="100%" src={i.videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                         </div>
                                         <div className='corps__items-list-sign-rightDiv col-lg-4 col-xl-6'>
                                             <p className='corps__items-list-sign-rightDiv-traduction'>{i.traduction}</p>
-                                            <div className="corps__items-list-sign-rightDiv-buttons">
-                                                <button  onClick={this.handleToWork} className="row corps__items-list-sign-rightDiv-buttons-button">
-                                                    A travailler
-                                                </button >
-                                                <button onClick={this.handleKnown} className="row corps__items-list-sign-rightDiv-buttons-button">
-                                                    Connus
-                                                </button>
-                                            </div>
+                                                {(known.indexOf(i.signId) !== -1) ? ( 
+                                                    (toWork.indexOf(i.signId) !== -1) ? (
+                                                        <AddToList signId={i.signId} known={true} toWork={true} />
+                                                    ) : (
+                                                        <AddToList signId={i.signId} known={true} toWork={false} />
+                                                    )
+                                                ): (
+                                                    (toWork.indexOf(i.signId) !== -1) ? (
+                                                        <AddToList signId={i.signId} known={false} toWork={true} />
+                                                    ) : (
+                                                        <AddToList signId={i.signId} known={false} toWork={false} />
+                                                    )
+                                                )}
                                         </div>
                                     </div> 
                                 )
@@ -131,3 +169,4 @@ class ShowCategory extends Component{
 }
 
 export default ShowCategory;
+

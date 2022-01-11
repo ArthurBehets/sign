@@ -9,23 +9,19 @@ const signCtrl = require('../controllers/sign');
 router.get('/getOne/:signId',  signCtrl.getOne);
 router.get('/getOneCategory/:categoryId', signCtrl.getOneCategory);
 router.get('/getAllCategories', signCtrl.getAllCategories);
+router.get('/getAllSigns', signCtrl.getAllSigns);
 
-router.post('/createSign', auth , multer,  signCtrl.createSign);
+router.post('/createSign', signCtrl.createSign);
 router.post('modifyTraduction', auth, signCtrl.modifyTraduction);
 router.post('modifyCategory', auth, signCtrl.modifyCategory);
 router.post('deleteSign', auth, signCtrl.deleteSign);
 
-router.post('/validProposition', auth, signCtrl.validProposition);
-router.post('/modificationPropositionCategory', auth, signCtrl.modificationPropositionCategory);
-router.post('/modificationPropositionTraduction', auth, signCtrl.modificationPropositionTraduction);
+router.post('/getToWork', signCtrl.getToWork);
+router.post('/getKnown', signCtrl.getKnown);
+router.post('/getOneToWork', signCtrl.getOneToWork);
+router.post('/getOneKnown', signCtrl.getOneKnown);
 
-router.post('/addToKnown', auth, signCtrl.addToKnown);
-router.post('/addToWork', auth, signCtrl.addToWork);
-
-router.post('/rmFromKnown', auth, signCtrl.addToKnown);
-router.post('/rmFromToWork', auth, signCtrl.addToWork);
-
-router.get('getPropositions', auth, signCtrl.getPropositions);
-
+router.post('/addToKnown/:statement', signCtrl.addToKnown);
+router.post('/addToWork/:statement', signCtrl.addToWork);
 
 module.exports = router;
