@@ -12,8 +12,8 @@ class NavList extends Component{
         if(localStorage.getItem('status') === 'connected'){ 
             return(
                 <div className='d-flex'>
-                    <Nav.Link href="/List/toWork">Ma liste "A travailler"</Nav.Link>
-                    <Nav.Link href="/List/known">Ma liste "Connus"</Nav.Link>
+                    <Nav.Link href="/List/ToWork">Ma liste "A travailler"</Nav.Link>
+                    <Nav.Link href="/List/Known">Ma liste "Connus"</Nav.Link>
                     <Nav.Link onClick={this.disconnect} href='/'>Se déconnecter</Nav.Link>
                 </div>
             )

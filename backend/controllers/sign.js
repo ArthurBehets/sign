@@ -168,7 +168,7 @@ exports.deleteSign = (req, res, next) => {
 exports.getToWork = (req, res, next) => {
     let datas = req.body;
     con.query(
-        'select signId from toWork where userId = ? ',
+        'select signId, traduction, videoUrl from toWork natural join sign where userId = ? ',
         [datas.userId],
         function(err, result){
             if(err){
@@ -210,7 +210,7 @@ exports.getOneKnown = (req, res, next) => {
 exports.getKnown = (req, res, next) => {
     let datas = req.body;
     con.query(
-        'select signId from known where userId = ? ',
+        'select signId, traduction, videoUrl from known natural join sign where userId = ? ',
         [datas.userId],
         function(err, result){
             if(err){

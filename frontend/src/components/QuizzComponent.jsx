@@ -16,26 +16,52 @@ class Quizz extends Component{
     }
 
     componentDidMount(){
-        fetch('http://localhost:3001/api/sign/getOneCategory/' + this.param)
-        .then(res =>{
-            if(res.ok){
-                return res.json()
-            }
-        })
-        .then(results =>{
-            this.setState({
-                sign : results
+        if(this.param === 'ToWork' || this.param === 'Known'){
+            fetch('http://localhost:3001/api/sign/get' + this.param + '/' ,{
+                method : 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body : JSON.stringify({'userId' : localStorage.getItem('userId')})
             })
-            quizzArray = results;
-            return quizzArray
-        })
-        .then(quizzArray =>{
-            random = Math.floor(Math.random() * quizzArray.length);
-            this.setState({
-                currentSign : quizzArray[random]
+            .then(res =>{
+                if(res.ok){
+                    return res.json()
+                }
+            })
+            .then(results =>{
+                console.log(results)
+                quizzArray = results
+                return quizzArray
+            })
+            .then(quizzArray =>{
+                random = Math.floor(Math.random() * quizzArray.length);
+                this.setState({
+                    currentSign : quizzArray[random]
             })
             })
         }
+        else{
+            fetch('http://localhost:3001/api/sign/getOneCategory/' + this.param)
+            .then(res =>{
+                if(res.ok){
+                    return res.json()
+                }
+            })
+            .then(results =>{
+                quizzArray = results;
+                return quizzArray
+            })
+            .then(quizzArray =>{
+                random = Math.floor(Math.random() * quizzArray.length);
+                this.setState({
+                    currentSign : quizzArray[random]
+            })
+            })
+        }
+
+    }
 
     getRamdom = () => {
         let answer = document.getElementById("answer").value;
@@ -46,9 +72,8 @@ class Quizz extends Component{
             document.getElementById("answer").value = '';
             document.getElementById("popup").innerHTML = "<p class='popup__good'>Bien joué</p>"
             setTimeout(clearPopup, 5000)
-            console.log('reussi')
             quizzArray.splice(random, 1);
-            if(quizzArray.length >= 2){
+            if(quizzArray.length > 0){
                 random = Math.floor(Math.random() * quizzArray.length);
                 this.setState({
                     currentSign : quizzArray[random]
@@ -73,7 +98,7 @@ class Quizz extends Component{
 
     constructor(props){
         super(props);
-        this.param = Number(props.category);
+        this.param = props.category;
     }
     
 
