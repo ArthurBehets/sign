@@ -110,18 +110,45 @@ ul{
                         flex-direction: column;
                         align-items : center;
                         &-button{
+                            background-color: rgba(255,255,255,0.1);
                             align-self: center;
+                            padding-left: 20px;
                             border : 1px solid #ffadad;
                             box-shadow: 1px 1px 1px 1px #ffadad;
                             margin-bottom: 20px;
+                            height : 30px;
                             width : 50%;
+                            &-checked{
+                                background-color: rgba(255,255,255,0.5);
+                                align-self: center;
+                                border : 1px solid #ffadad;
+                                box-shadow: 1px 1px 1px 1px #ffadad;
+                                margin-bottom: 20px;
+                                height : 30px;
+                                width : 30%;
+                                &:hover{
+                                    color : black;
+                                    box-shadow: 2px 2px 2px 2px #ffadad;
+                                    padding-left : 15px;
+                                }
+                                &:active{
+                                    padding-left : 5px;
+                                    width : 28%;
+                                    box-shadow: 0.5px 0.5px 0.5px 0.5px #ffadad;
+                                }
+                            }
+                            &-icon{
+                                padding : 0;
+                                margin : 0;
+                                color : green;
+                            }
                             &:hover{
                                 color : black;
                                 box-shadow: 2px 2px 2px 2px #ffadad;
-                                padding-left : 13px;
+                                padding-left : 23px;
                             }
                             &:active{
-                                padding-left : 10px;
+                                padding-left : 13px;
                                 width : 48%;
                                 box-shadow: 0.5px 0.5px 0.5px 0.5px #ffadad;
                             }

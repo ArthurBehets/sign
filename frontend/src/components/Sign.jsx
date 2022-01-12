@@ -3,9 +3,10 @@ import { Component, React } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import {faArrowLeft, faCheck} from '@fortawesome/free-solid-svg-icons'
 
-library.add(fab, faArrowLeft)
+library.add(fab, faArrowLeft, fas, faCheck)
 
 class Sign extends Component{
     state = {
@@ -159,10 +160,10 @@ class Sign extends Component{
                                     (this.state.toWork === true) ? (
                                         <div className="corps__items-list-sign-rightDiv-buttons">
                                             <button  onClick={ () => this.handleToWork('checked')} id={'buttonToWork + signId' } className="row corps__items-list-sign-rightDiv-buttons-button-checked">
-                                                A travailler
+                                                <p><FontAwesomeIcon icon='check' className='corps__items-list-sign-rightDiv-buttons-button-icon'/> A travailler</p>
                                             </button >
                                             <button onClick={ () => this.handleKnown('checked')} id={'buttonKnown + signId' } className="row corps__items-list-sign-rightDiv-buttons-button-checked">
-                                                Connus
+                                                <p><FontAwesomeIcon icon='check' className='corps__items-list-sign-rightDiv-buttons-button-icon'/> Connu</p>
                                             </button>
                                         </div>
                                     ) : (
@@ -171,7 +172,7 @@ class Sign extends Component{
                                                 A travailler
                                             </button >
                                             <button onClick={ () => this.handleKnown('checked')} id={'buttonKnown + signId' } className="row corps__items-list-sign-rightDiv-buttons-button-checked">
-                                                Connus
+                                                <p><FontAwesomeIcon icon='check' className='corps__items-list-sign-rightDiv-buttons-button-icon'/> Connu</p>
                                             </button>
                                         </div>
                                     )
@@ -179,7 +180,7 @@ class Sign extends Component{
                                     (this.state.toWork === true) ? (
                                         <div className="corps__items-list-sign-rightDiv-buttons">
                                             <button  onClick={ () => this.handleToWork('checked')} id={'buttonToWork + signId' } className="row corps__items-list-sign-rightDiv-buttons-button-checked">
-                                                A travailler
+                                                <p><FontAwesomeIcon icon='check' className='corps__items-list-sign-rightDiv-buttons-button-icon'/> A travailler</p>
                                             </button >
                                             <button onClick={ () => this.handleKnown('unchecked')} id={'buttonKnown + signId' } className="row corps__items-list-sign-rightDiv-buttons-button">
                                                 Connus

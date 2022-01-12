@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import {faCheck} from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas, faCheck)
+
 class addToList extends Component{
     state = {
         props : [],
@@ -86,10 +93,10 @@ class addToList extends Component{
             return(
                 <div className="corps__items-list-sign-rightDiv-buttons">
                     <button  onClick={ () => this.handleToWork('checked')} id={'buttonToWork + signId' } className="row corps__items-list-sign-rightDiv-buttons-button-checked">
-                        A travailler
+                        <p><FontAwesomeIcon icon='check' className='corps__items-list-sign-rightDiv-buttons-button-icon'/> A travailler</p>
                     </button >
                     <button onClick={ () => this.handleKnown('checked')} id={'buttonKnown + signId' } className="row corps__items-list-sign-rightDiv-buttons-button-checked">
-                        Connus
+                    <p><FontAwesomeIcon icon='check' className='corps__items-list-sign-rightDiv-buttons-button-icon'/> Connu</p>
                     </button>
                 </div>
             )
@@ -101,7 +108,7 @@ class addToList extends Component{
                         A travailler
                     </button >
                     <button onClick={ () => this.handleKnown('checked')} id={'buttonKnown + signId' } className="row corps__items-list-sign-rightDiv-buttons-button-checked">
-                        Connus
+                    <p><FontAwesomeIcon icon='check' className='corps__items-list-sign-rightDiv-buttons-button-icon'/> Connu</p>
                     </button>
                 </div>
             )
@@ -122,7 +129,7 @@ class addToList extends Component{
             return(
                 <div className="corps__items-list-sign-rightDiv-buttons">
                     <button  onClick={ () => this.handleToWork('checked')} id={'buttonToWork + signId' } className="row corps__items-list-sign-rightDiv-buttons-button-checked">
-                        A travailler
+                    <p><FontAwesomeIcon icon='check' className='corps__items-list-sign-rightDiv-buttons-button-icon'/> A travailler</p>
                     </button >
                     <button onClick={ () => this.handleKnown('unchecked')} id={'buttonKnown + signId' } className="row corps__items-list-sign-rightDiv-buttons-button">
                         Connus
