@@ -12,7 +12,6 @@ class ConnectionComponent extends Component{
             'email' : email,
             'password' : password
         }
-        console.log(body)
         fetch('http://localhost:3001/api/auth/login/', {
             method : 'POST',
             headers: {
@@ -39,16 +38,16 @@ class ConnectionComponent extends Component{
 
     render(){
         return(
-            <div>
-                <label>
+            <div className="form">
+                <label className="form__label">
                     Adresse Email
-                    <input type='email' id="email" placeholder='exemple@exemple.com'></input>
+                    <input type='email' id="email" placeholder='exemple@exemple.com' className="form__label-input"></input>
                 </label>
-                <label>
+                <label className="form__label">
                     Mot de passe
-                    <input type="password" id="password" placeholder='Mot de passe'></input>
+                    <input type="password" id="password" placeholder='Mot de passe' className="form__label-input"></input>
                 </label>
-                <button onClick={this.connect}></button>
+                <button onClick={this.connect} className="form__button">Se connecter</button>
             </div>
         )
     }

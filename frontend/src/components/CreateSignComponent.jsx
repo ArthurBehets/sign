@@ -14,7 +14,6 @@ class CreateSignComponent extends Component{
             }
         })
         .then(response => {
-            console.log(response);
             this.setState({
                 categories : response
             })

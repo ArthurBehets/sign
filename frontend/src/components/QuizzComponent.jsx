@@ -31,7 +31,6 @@ class Quizz extends Component{
                 }
             })
             .then(results =>{
-                console.log(results)
                 quizzArray = results
                 return quizzArray
             })
@@ -65,9 +64,6 @@ class Quizz extends Component{
 
     getRamdom = () => {
         let answer = document.getElementById("answer").value;
-        console.log(answer);
-        console.log(quizzArray[random].traduction)
-        
         if(answer === quizzArray[random].traduction){
             document.getElementById("answer").value = '';
             document.getElementById("popup").innerHTML = "<p class='popup__good'>Bien joué</p>"
@@ -87,8 +83,8 @@ class Quizz extends Component{
         }
         else{
             document.getElementById("popup").innerHTML = "<p class='popup__bad'>Dommage</p>"
+            document.getElementById("answer").value = ''
             setTimeout(clearPopup, 5000)
-            console.log('rate')
             random = Math.floor(Math.random() * quizzArray.length);
             this.setState({
                 currentSign : quizzArray[random]
@@ -117,8 +113,6 @@ class Quizz extends Component{
                             <input type="text" name="answer" id='answer' placeholder='Ecrivez votre réponse ici'></input>
                             <button onClick={this.getRamdom}>Valider</button>
                         </div>
-                        
-                        {this.state.currentSign.traduction}
                     </div>
                 </div>
             )

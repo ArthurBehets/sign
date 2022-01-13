@@ -26,17 +26,11 @@ class Datalist extends Component{
             }
         })
         .then(results =>{
-            console.log(results);
             this.setState({
                 suggestions : results
             })
             suggestionsVar = results
         })
-    }
-
-    constructor(props){
-        super(props);
-        console.log(props);
     }
 
     render(){

@@ -9,7 +9,6 @@ class SearchBar extends Component {
 
     handleInputChange = () => {
         this.query = this.search.value;
-        console.log(this.data)
         this.selectDatas()
     }
 

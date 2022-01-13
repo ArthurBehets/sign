@@ -8,7 +8,6 @@ class ListComponent extends Component{
     }
 
     componentDidMount(){
-        console.log('je fonctionne')
         fetch('http://localhost:3001/api/sign/get' + this.param + '/' ,{
             method : 'POST',
             headers: {
@@ -26,7 +25,6 @@ class ListComponent extends Component{
             this.setState({
                 signs : response
             })
-            console.log(this.state.signs)
         })
     }
 

@@ -8,9 +8,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fab, faYoutube, faFontAwesomeFlag)
 
 class Footer extends Component{
-    componentDidMount(){
-        console.log("ok");
-    }
     render () {
         if(localStorage.getItem('grade') !== 'admin'){
             return(
@@ -18,7 +15,7 @@ class Footer extends Component{
                     <div className='container footer__content'>
                         <div className='row footer__content-lists'>
                             <ul className='col-6 row footer__content-lists-list'>
-                                <li><a href="/signalement">Signaler une erreur</a></li>
+                                <li><a href="mailto:arthur.behets24@gmail.com?subject=SignWebSiteError">Signaler une erreur</a></li>
                             </ul>
                             <ul className='col-6 row footer__content-lists-list'>
                                 <li className='row'>

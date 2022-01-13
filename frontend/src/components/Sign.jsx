@@ -33,12 +33,10 @@ class Sign extends Component{
             }
         })
         .then(response =>{
-            console.log(this.state.toWork)
             if(response[0]){
                 this.setState({
                     toWork : true
                 })
-                console.log(this.state.toWork)
             }
         })
         fetch('http://localhost:3001/api/sign/getOneKnown/',{
@@ -55,13 +53,11 @@ class Sign extends Component{
             }
         })
         .then(response =>{
-            console.log(this.state.known)
             if(response[0]){
                 if(response){
                     this.setState({
                         known : true
                     })
-                    console.log(this.state.known)
                 }
             }
             fetch("http://localhost:3001/api/sign/getOne/" + this.param)
@@ -93,7 +89,6 @@ class Sign extends Component{
             }
         })
         .then( result =>{
-            console.log(result)
             if(statement === 'checked'){
                this.setState({
                    known : false
@@ -122,7 +117,6 @@ class Sign extends Component{
             }
         })
         .then( result =>{
-            console.log(result)
             if(statement === 'checked'){
                this.setState({
                    toWork : false

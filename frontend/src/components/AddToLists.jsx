@@ -21,9 +21,6 @@ class addToList extends Component{
             known : this.props.known
         })
         this.signId = this.props.signId;
-        console.log(this.props.toWork)
-        console.log(this.props.known)
-        console.log(this.props.signId)
     }
     handleKnown(statement){
         fetch('http://localhost:3001/api/sign/addToKnown/' + statement,{
@@ -40,7 +37,6 @@ class addToList extends Component{
             }
         })
         .then( result =>{
-            console.log(result)
             if(statement === 'checked'){
                this.setState({
                    known : false
@@ -69,7 +65,6 @@ class addToList extends Component{
             }
         })
         .then( result =>{
-            console.log(result)
             if(statement === 'checked'){
                this.setState({
                    toWork : false

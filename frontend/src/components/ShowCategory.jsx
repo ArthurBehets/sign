@@ -64,7 +64,6 @@ class ShowCategory extends Component{
             }
         })
         .then(results =>{
-            console.log(results)
             this.setState({
                 sign : results
             })
@@ -102,9 +101,9 @@ class ShowCategory extends Component{
                     <div className="row corps__elements-head">
                         <h1 className="col-lg-1 col-sm-6 corps__elements-head-title"> { this.state.category } </h1>
                         <div   className=" col corps__elements-head-button">
-                            <button onClick={this.changeDisplay}><FontAwesomeIcon icon="grip-lines-vertical" /></button>
+                            <button onClick={this.changeDisplay}><FontAwesomeIcon icon="grip-lines-vertical" className="corps__elements-head-button-icon" /></button>
                         </div>
-                        <a href={"/quizz/" + this.state.categoryId} className="col" >Passer le quizz</a>
+                        <a href={"/quizz/" + this.state.categoryId} className="col corps__elements-head-link" >Passer le quizz</a>
                     </div>
                     <div className="corps__element">
                         <div className="corps__elements-list row">
